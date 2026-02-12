@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott - Product Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts for better typography -->
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #c3f1e9; /* Light gray background */
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #c3f1e9; /* Blue header */
+            text-align: center;
+            
+        }
+        /*header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }*/
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .intro {
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-content {
+            padding: 15px;
+        }
+        .product h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            color: #007BFF;
+        }
+        .product p {
+            margin: 0 0 15px 0;
+        }
+        .product a {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .product a:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007BFF;
+            color: white;
+            margin-top: 40px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <h1> <img src="scot.png" width="300px" height="300px"></h1>
+    </header>
+    <div class="container">
+        <p class="intro">"Welcome to Scott! Discover handpicked products with detailed descriptions and direct links to explore and purchase."
+Why it's best: Straightforward, builds trust by emphasizing "handpicked," and directly explains the site's flow (browse → click links). Perfect for a clean, no-frills vibe.</p>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="https://rukminim2.flixcart.com/image/982/982/xif0q/t-shirt/a/p/d/l-33781111-hrx-by-hrithik-roshan-original-imahh5gdgtgyymhy.jpeg?q=90" alt="Product Image">
+                <div class="product-content">
+                    <h2>Men Printed Round Neck Polyester Black T-Shirt</h2>
+                    <p>Description: Brand-HRX by Hrithik Roshan<br>
+
+                                     Sleeve-Short Sleeve<br>
+
+Type-Round Neck<br>
+
+Fit-Regular<br>
+
+Fabric- Polyester<br>
+
+Style Code- 33781111<br>
+
+Ideal For-Men<br>
+
+Pattern-Printed<br>
+
+Pack of-1<br>
+
+Neck Type- Round Neck<br>
+
+Size- All size<br>
+<b>Prize- Rs.199</b> <br>
+</p>
+                    <a href="https://www.flipkart.com/hrx-hrithik-roshan-printed-men-round-neck-black-t-shirt/p/itm934ec84e2063e?" target="_blank">Check Product</a>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/u/l/t/32-z5-mjrp-baggy-divit-fashion-original-imahgq3frsuqd9f4.jpeg?q=90" alt="Product Image">
+                <div class="product-content">
+                    <h2>Men Loose Fit Mid Rise Light Blue Jeans</h2>
+                    <p>Product Details<br>
+Brand: RABEZO DENIM<br>
+Style Code: SNS02-RAB-MEN-ICE-BAGGY<br>
+Ideal For: Men<br>
+Pack Of: 1<br>
+Fit: Loose Fit<br>
+Rise: Mid Rise<br>
+Pattern: Solid<br>
+Color: Light Blue<br>
+Faded: Clean Look<br>
+
+Fabric: Denim<br>
+
+
+<b>Prize- Rs.299</b></p>
+                    <a href="https://www.flipkart.com/zaysh-loose-fit-men-light-blue-jeans/p/itma85e08fe41d1c?" target="_blank">Check Product</a>
+                </div>
+            </div>
+            
+            <!-- Add more products here by copying the div above -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 Scott. All rights reserved.</p>
+            <p>Contact: Instagram- @techby.eren | Address: SH-84 KIRANPUR,SHAHKUND, BHAGALPUR,BIHAR,INDIA 813108</p>
+    </footer>
+</body>
+</html>
