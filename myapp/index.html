@@ -9,216 +9,170 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
-
 /* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Roboto',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* BACKGROUND */
-body{
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    min-height:100vh;
-    color:white;
+/* BODY */
+body {
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color: white;
+    min-height: 100vh;
 }
 
 /* NAVBAR */
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    position:sticky;
-    top:0;
-    z-index:1000;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* NAVBAR TEXT ANIMATION */
 nav h2 {
     font-size: 28px;
     letter-spacing: 1px;
     color: #00f3ff;
-    position: relative;
     animation: neonLoop 3s ease-in-out infinite alternate;
-    text-shadow:
-        0 0 5px #00f3ff,
-        0 0 10px #00f3ff,
-        0 0 20px #00f3ff,
-        0 0 40px #fc00ff,
-        0 0 80px #fc00ff;
+    text-shadow: 0 0 5px #00f3ff,0 0 10px #00f3ff,0 0 20px #00f3ff,0 0 40px #fc00ff,0 0 80px #fc00ff;
 }
 
 @keyframes neonLoop {
-    0% {
-        transform: translateY(0);
-        text-shadow:
-          0 0 5px #00f3ff,
-          0 0 10px #00f3ff,
-          0 0 20px #00f3ff,
-          0 0 40px #fc00ff,
-          0 0 80px #fc00ff;
-    }
-    50% {
-        transform: translateY(-5px);
-        text-shadow:
-          0 0 10px #00f3ff,
-          0 0 20px #00f3ff,
-          0 0 30px #00f3ff,
-          0 0 50px #fc00ff,
-          0 0 100px #fc00ff;
-    }
-    100% {
-        transform: translateY(0);
-        text-shadow:
-          0 0 5px #00f3ff,
-          0 0 10px #00f3ff,
-          0 0 20px #00f3ff,
-          0 0 40px #fc00ff,
-          0 0 80px #fc00ff;
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 /* HERO */
-.hero{
-    text-align:center;
-    padding:60px 20px;
+.hero {
+    text-align: center;
+    padding: 60px 20px;
 }
 
-.hero img{
-    width:320px;
-    max-width:80%;
-    margin-bottom:20px;
-    filter:drop-shadow(0 0 20px rgba(0,255,255,0.6));
-    transition:0.4s;
+.hero img {
+    width: 320px;
+    max-width: 80%;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(0,255,255,0.6));
+    transition: 0.4s;
 }
 
-.hero img:hover{
-    transform:scale(1.05);
-}
+.hero img:hover { transform: scale(1.05); }
 
-/* HERO TEXT ANIMATION */
-.hero h1, .hero p{
-    opacity:0;
-    transform:translateY(-20px);
-    animation-fill-mode:forwards;
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeSlideDown 1s ease-out 0.5s forwards, pulseGlow 2s infinite alternate;
     text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);
 }
 
-.hero h1{
-    animation:fadeSlideDown 1s ease-out 0.5s forwards, pulseGlow 2s infinite alternate;
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeSlideDown 1s ease-out 1.2s forwards;
+    text-shadow:0 0 6px rgba(0,255,255,0.5),0 0 10px rgba(255,0,255,0.2);
 }
 
-.hero p{
-    animation:fadeSlideDown 1s ease-out 1.2s forwards;
+@keyframes fadeSlideDown {
+    0% { opacity:0; transform:translateY(-20px);}
+    100% { opacity:1; transform:translateY(0);}
 }
 
-@keyframes fadeSlideDown{
-    0%{
-        opacity:0;
-        transform:translateY(-20px);
-    }
-    100%{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes pulseGlow{
-    0%{text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);}
-    50%{text-shadow:0 0 15px rgba(0,255,255,0.8),0 0 20px rgba(255,0,255,0.5);}
-    100%{text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);}
+@keyframes pulseGlow {
+    0% { text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);}
+    50% { text-shadow:0 0 15px rgba(0,255,255,0.8),0 0 20px rgba(255,0,255,0.5);}
+    100% { text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);}
 }
 
 /* PRODUCT GRID */
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-    padding:40px;
-    align-items:start; /* align top so cards look uniform */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    align-items: start;
 }
 
 /* PRODUCT CARD */
-.product{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    background:rgba(255,255,255,0.08);
-    border-radius:20px;
-    overflow:hidden;
-    backdrop-filter:blur(10px);
-    transition:.4s;
-    height:100%;
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
+    height: 100%;
 }
 
-.product:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 0 30px rgba(0,255,255,.3);
+.product:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0,255,255,0.3);
 }
 
-.product img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+.product img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
 }
 
-.product-content{
-    padding:20px;
+.product-content {
+    padding: 20px;
 }
 
-.product h2{
-    font-size:18px;
-    margin-bottom:10px;
-    line-height:1.2;
-    max-height:3em; /* limit title height for alignment */
-    overflow:hidden;
-    text-overflow:ellipsis;
+.product h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    max-height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.product p{
-    font-size:14px;
-    opacity:.8;
-    margin-bottom:15px;
+.product p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 15px;
 }
 
-/* BUTTON */
-.product a{
-    display:inline-block;
-    padding:10px 20px;
-    border-radius:50px;
-    background:linear-gradient(45deg,#00dbde,#fc00ff);
-    color:white;
-    text-decoration:none;
-    transition:.3s;
+.product a {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: linear-gradient(45deg,#00dbde,#fc00ff);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-.product a:hover{
-    transform:scale(1.1);
+.product a:hover {
+    transform: scale(1.1);
 }
 
 /* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    margin-top:40px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 @media(max-width:768px){
-    .hero h1{
-        font-size:2rem;
-    }
-
-    .hero img{
-        width:220px;
-    }
+    .hero h1 { font-size: 2rem; }
+    .hero img { width: 220px; }
 }
 </style>
 </head>
@@ -237,7 +191,7 @@ footer{
 <p>Handpicked deals with best price 🔥</p>
 </section>
 
-<!-- PRODUCTS -->
+<!-- PRODUCTS GRID -->
 <div class="products">
 
 <!-- PRODUCT 1 -->
@@ -246,12 +200,17 @@ footer{
 <div class="product-content">
 <h2>Men Printed Round Neck Polyester Black T-Shirt</h2>
 <p>
+Brand-HRX by Hrithik Roshan<br>
+Sleeve-Short Sleeve<br>
 Type-Round Neck<br>
 Fit-Regular<br>
 Fabric- Polyester<br>
+Style Code- 33781111<br>
+Ideal For-Men<br>
 Pattern-Printed<br>
 Pack of-1<br>
 Neck Type- Round Neck<br>
+Size- All size<br>
 <b>Prize- Rs.199</b>
 </p>
 <a href="https://www.flipkart.com/hrx-hrithik-roshan-printed-men-round-neck-black-t-shirt/p/itm934ec84e2063e?" target="_blank">Check Product</a>
@@ -265,11 +224,15 @@ Neck Type- Round Neck<br>
 <h2>Men Loose Fit Mid Rise Light Blue Jeans</h2>
 <p>
 Brand: RABEZO DENIM<br>
+Style Code: SNS02-RAB-MEN-ICE-BAGGY<br>
 Ideal For: Men<br>
 Pack Of: 1<br>
 Fit: Loose Fit<br>
+Rise: Mid Rise<br>
 Pattern: Solid<br>
 Color: Light Blue<br>
+Faded: Clean Look<br>
+Fabric: Denim<br>
 <b>Prize- Rs.299</b>
 </p>
 <a href="https://www.flipkart.com/zaysh-loose-fit-men-light-blue-jeans/p/itma85e08fe41d1c?" target="_blank">Check Product</a>
@@ -298,7 +261,7 @@ Length- Standard Length<br>
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/81uuiJm4bbL._SX679_.jpg">
 <div class="product-content">
-<h2>Japanese Dragon Football Jerseys Team Men's</h2>
+<h2>Japanese Theme Jersey Cartoon Dragon Football Jerseys Team Men's</h2>
 <p>
 <b>Product details</b><br>
 Material composition- Polyester<br>
@@ -311,6 +274,86 @@ Country of Origin- India<br>
 <b>Prize- Rs.399</b>
 </p>
 <a href="https://amzn.to/4azbbZM" target="_blank">Check Product</a>
+</div>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/81IqJL+LTbL._SX679_.jpg">
+<div class="product-content">
+<h2>Dragon Ninja Custom Sports Jersey</h2>
+<p>
+<b>Product details</b><br>
+Material composition-Premium Dry-Fit Polyester<br>
+Fit type- Athletic Comfort Fit – not too tight, not too loose<br>
+Sleeve type- Half Sleeve<br>
+Collar style- Round Neck<br>
+Length- Standard Length<br>
+Neck style- Crew Neck<br>
+Country of Origin- India<br>
+<b>Prize- Rs.799</b>
+</p>
+<a href="https://amzn.to/4c1vC49" target="_blank">Check Product</a>
+</div>
+</div>
+
+<!-- PRODUCT 6 -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/71qa6UfZUxL._SY741_.jpg">
+<div class="product-content">
+<h2>BLUE STAR SHARK Cotton Track Pants</h2>
+<p>
+<b>Product details</b><br>
+Material type- Cotton Blend<br>
+Length- Standard Length<br>
+Style- Classic<br>
+Closure type- Drawstring<br>
+Care instruction- Hand Wash Only<br>
+Fit type- Loose<br>
+Country of Origin- India<br>
+<b>Prize- Rs.450</b>
+</p>
+<a href="https://amzn.to/4rj1p5h" target="_blank">Check Product</a>
+</div>
+</div>
+
+<!-- PRODUCT 7 -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/51cNMNimNGL._SY741_.jpg">
+<div class="product-content">
+<h2>BE ACTIVE Men's Solid Slim Fit Cotton Casual Shirt</h2>
+<p>
+<b>Product details</b><br>
+Material composition: 80% Linen, 20% Cotton<br>
+Pattern: Ceanic<br>
+Fit type: Regular Fit<br>
+Sleeve type: Long Sleeve<br>
+Collar style: Band Collar<br>
+Length: Standard Length<br>
+Country of Origin: India<br>
+<b>Prize-Rs.650</b>
+</p>
+<a href="https://amzn.to/3ZyM3NQ" target="_blank">Check Product</a>
+</div>
+</div>
+
+<!-- PRODUCT 8 -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/61PnZAQSfWL._SY741_.jpg">
+<div class="product-content">
+<h2>GRECIILOOKS Men's Formal Button Down Shirt – Slim Fit Polycotton Shirt's for Men</h2>
+<p>
+<b>Product details</b><br>
+Material composition: Poly Cotton<br>
+Fit type: Regular Fit<br>
+Sleeve type: Long Sleeve<br>
+Collar style: Button Down<br>
+Length: Standard Length<br>
+Neck style: Collared Neck<br>
+Country of Origin: India<br>
+<b>Prize- Rs.499</b>
+</p>
+<a href="https://amzn.to/3Ohrrav" target="_blank">Check Product</a>
 </div>
 </div>
 
