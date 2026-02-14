@@ -1,187 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scott - Product Catalog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts for better typography -->
-    <style>
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #c3f1e9; /* Light gray background */
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #c3f1e9; /* Blue header */
-            text-align: center;
-            
-        }
-        /*header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }*/
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .intro {
-            font-style: italic;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.5em;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .product {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .product-content {
-            padding: 15px;
-        }
-        .product h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.5em;
-            color: #007BFF;
-        }
-        .product p {
-            margin: 0 0 15px 0;
-        }
-        .product a {
-            display: inline-block;
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .product a:hover {
-            background-color: #0056b3;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #007BFF;
-            color: white;
-            margin-top: 40px;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .products {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scott - Product Catalog</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Roboto',sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height:100vh;
+    color:white;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/* NAVBAR TEXT ANIMATION */
+nav h2 {
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #00f3ff;
+    position: relative;
+    animation: neonLoop 3s ease-in-out infinite alternate;
+    text-shadow:
+        0 0 5px #00f3ff,
+        0 0 10px #00f3ff,
+        0 0 20px #00f3ff,
+        0 0 40px #fc00ff,
+        0 0 80px #fc00ff;
+}
+
+@keyframes neonLoop {
+    0% {
+        transform: translateY(0);
+        text-shadow:
+          0 0 5px #00f3ff,
+          0 0 10px #00f3ff,
+          0 0 20px #00f3ff,
+          0 0 40px #fc00ff,
+          0 0 80px #fc00ff;
+    }
+    50% {
+        transform: translateY(-5px);
+        text-shadow:
+          0 0 10px #00f3ff,
+          0 0 20px #00f3ff,
+          0 0 30px #00f3ff,
+          0 0 50px #fc00ff,
+          0 0 100px #fc00ff;
+    }
+    100% {
+        transform: translateY(0);
+        text-shadow:
+          0 0 5px #00f3ff,
+          0 0 10px #00f3ff,
+          0 0 20px #00f3ff,
+          0 0 40px #fc00ff,
+          0 0 80px #fc00ff;
+    }
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero img{
+    width:320px;
+    max-width:80%;
+    margin-bottom:20px;
+    filter:drop-shadow(0 0 20px rgba(0,255,255,0.6));
+    transition:0.4s;
+}
+
+.hero img:hover{
+    transform:scale(1.05);
+}
+
+/* HERO TEXT ANIMATION */
+.hero h1, .hero p{
+    opacity:0;
+    transform:translateY(-20px);
+    animation-fill-mode:forwards;
+    text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);
+}
+
+.hero h1{
+    animation:fadeSlideDown 1s ease-out 0.5s forwards, pulseGlow 2s infinite alternate;
+}
+
+.hero p{
+    animation:fadeSlideDown 1s ease-out 1.2s forwards;
+}
+
+@keyframes fadeSlideDown{
+    0%{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pulseGlow{
+    0%{text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);}
+    50%{text-shadow:0 0 15px rgba(0,255,255,0.8),0 0 20px rgba(255,0,255,0.5);}
+    100%{text-shadow:0 0 8px rgba(0,255,255,0.5),0 0 12px rgba(255,0,255,0.3);}
+}
+
+/* PRODUCT GRID */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    padding:40px;
+    align-items:start; /* align top so cards look uniform */
+}
+
+/* PRODUCT CARD */
+.product{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    transition:.4s;
+    height:100%;
+}
+
+.product:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 0 30px rgba(0,255,255,.3);
+}
+
+.product img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.product-content{
+    padding:20px;
+}
+
+.product h2{
+    font-size:18px;
+    margin-bottom:10px;
+    line-height:1.2;
+    max-height:3em; /* limit title height for alignment */
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.product p{
+    font-size:14px;
+    opacity:.8;
+    margin-bottom:15px;
+}
+
+/* BUTTON */
+.product a{
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:50px;
+    background:linear-gradient(45deg,#00dbde,#fc00ff);
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.product a:hover{
+    transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero img{
+        width:220px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <header>
 
-        <h1> <img src="scot.png" width="300px" height="300px"></h1>
-    </header>
-    <div class="container">
-        <p class="intro">"Welcome to Scott! Discover handpicked products with detailed descriptions and direct links to explore and purchase."
-Why it's best: Straightforward, builds trust by emphasizing "handpicked," and directly explains the site's flow (browse → click links). Perfect for a clean, no-frills vibe.</p>
-        <div class="products">
-            <!-- Product 1 -->
-            <div class="product">
-                <img src="https://rukminim2.flixcart.com/image/982/982/xif0q/t-shirt/a/p/d/l-33781111-hrx-by-hrithik-roshan-original-imahh5gdgtgyymhy.jpeg?q=90" alt="Product Image">
-                <div class="product-content">
-                    <h2>Men Printed Round Neck Polyester Black T-Shirt</h2>
-                    <p>Description: Brand-HRX by Hrithik Roshan<br>
+<!-- NAVBAR -->
+<nav>
+<h2>SCOTT</h2>
+</nav>
 
-                                     Sleeve-Short Sleeve<br>
+<!-- HERO -->
+<section class="hero">
+<img src="scot.png" alt="Scott Logo">
+<h1>Discover Trending Products</h1>
+<p>Handpicked deals with best price 🔥</p>
+</section>
 
+<!-- PRODUCTS -->
+<div class="products">
+
+<!-- PRODUCT 1 -->
+<div class="product">
+<img src="https://rukminim2.flixcart.com/image/982/982/xif0q/t-shirt/a/p/d/l-33781111-hrx-by-hrithik-roshan-original-imahh5gdgtgyymhy.jpeg?q=90">
+<div class="product-content">
+<h2>Men Printed Round Neck Polyester Black T-Shirt</h2>
+<p>
 Type-Round Neck<br>
-
 Fit-Regular<br>
-
 Fabric- Polyester<br>
-
-Style Code- 33781111<br>
-
-Ideal For-Men<br>
-
 Pattern-Printed<br>
-
 Pack of-1<br>
-
 Neck Type- Round Neck<br>
-
-Size- All size<br>
-<b>Prize- Rs.199</b> <br>
+<b>Prize- Rs.199</b>
 </p>
-                    <a href="https://www.flipkart.com/hrx-hrithik-roshan-printed-men-round-neck-black-t-shirt/p/itm934ec84e2063e?" target="_blank">Check Product</a>
-                </div>
-            </div>
-            
-            <!-- Product 2 -->
-            <div class="product">
-                <img src="https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/u/l/t/32-z5-mjrp-baggy-divit-fashion-original-imahgq3frsuqd9f4.jpeg?q=90" alt="Product Image">
-                <div class="product-content">
-                    <h2>Men Loose Fit Mid Rise Light Blue Jeans</h2>
-                    <p>Product Details<br>
+<a href="https://www.flipkart.com/hrx-hrithik-roshan-printed-men-round-neck-black-t-shirt/p/itm934ec84e2063e?" target="_blank">Check Product</a>
+</div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="product">
+<img src="https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/u/l/t/32-z5-mjrp-baggy-divit-fashion-original-imahgq3frsuqd9f4.jpeg?q=90">
+<div class="product-content">
+<h2>Men Loose Fit Mid Rise Light Blue Jeans</h2>
+<p>
 Brand: RABEZO DENIM<br>
-Style Code: SNS02-RAB-MEN-ICE-BAGGY<br>
 Ideal For: Men<br>
 Pack Of: 1<br>
 Fit: Loose Fit<br>
-Rise: Mid Rise<br>
 Pattern: Solid<br>
 Color: Light Blue<br>
-Faded: Clean Look<br>
+<b>Prize- Rs.299</b>
+</p>
+<a href="https://www.flipkart.com/zaysh-loose-fit-men-light-blue-jeans/p/itma85e08fe41d1c?" target="_blank">Check Product</a>
+</div>
+</div>
 
-Fabric: Denim<br>
-
-
-<b>Prize- Rs.299</b></p>
-                    <a href="https://www.flipkart.com/zaysh-loose-fit-men-light-blue-jeans/p/itma85e08fe41d1c?" target="_blank">Check Product</a>
-                </div>
-            </div>
-            
-            <!-- Add more products here by copying the div above -->
-                <!-- product 3-->
-             <div class="product">
-                <img src="https://m.media-amazon.com/images/I/713n+TxyfCL._SX569_.jpg" alt="product image">
-                <div class="product-content">
-                    <h2> Symbol Men's Cotton Rich Solid Polo Tshirt </h2>
-                    <p>Product details</p>
- Material composition60% Cotton, 40% Polyester<br>
+<!-- PRODUCT 3 -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/713n+TxyfCL._SX569_.jpg">
+<div class="product-content">
+<h2>Symbol Men's Cotton Rich Solid Polo Tshirt</h2>
+<p>
+Material composition60% Cotton, 40% Polyester<br>
 Pattern- Solid<br>
 Fit type- Regular Fit<br>
 Sleeve type- Short Sleeve<br>
 Collar style- Classic Collar<br>
 Length- Standard Length<br>
-<b>Prize- Rs.399</b><br>
-                    <a href="https://amzn.to/4qzoeAw" target="_blank">Check product</a>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2026 Scott. All rights reserved.</p>
-            <p>Contact: Instagram- @techby.eren | Address: SH-84 KIRANPUR,SHAHKUND, BHAGALPUR,BIHAR,INDIA 813108</p>
-    </footer>
-</body>
+<b>Prize- Rs.399</b>
+</p>
+<a href="https://amzn.to/4qzoeAw" target="_blank">Check Product</a>
+</div>
+</div>
 
+<!-- PRODUCT 4 -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/81uuiJm4bbL._SX679_.jpg">
+<div class="product-content">
+<h2>Japanese Dragon Football Jerseys Team Men's</h2>
+<p>
+<b>Product details</b><br>
+Material composition- Polyester<br>
+Fit type- Regular Fit<br>
+Sleeve type- Short Sleeve<br>
+Collar style- Round Neck<br>
+Length- Standard Length<br>
+Neck style- Round Neck<br>
+Country of Origin- India<br>
+<b>Prize- Rs.399</b>
+</p>
+<a href="https://amzn.to/4azbbZM" target="_blank">Check Product</a>
+</div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>&copy; 2026 Scott. All rights reserved.</p>
+<p>Instagram- @techby.eren | SH-84 KIRANPUR,SHAHKUND, BHAGALPUR,BIHAR,INDIA 813108</p>
+</footer>
+
+</body>
 </html>
